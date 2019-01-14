@@ -1,0 +1,23 @@
+.board {}
+
+.myboard {
+  border: 3px black solid;
+  display: block;
+  grid-column-start: 2;
+  grid-column-end: 6;
+  user-select: none;
+
+}
+
+.cell {
+  width: 31.5px;
+  height: 31.5px;
+  border: 1px black solid;
+  display: inline-block;
+
+  background: cyan;
+
+  &.explosion {
+    background: palegoldenrod;
+  }
+}
