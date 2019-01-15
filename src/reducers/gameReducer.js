@@ -1,41 +1,15 @@
 import {} from "../actions/types";
+import { BlankBoard, placeShip } from "../functions/functions";
+import { ShipTypes } from "../assets/index";
 //statuses
-/**
- * 0 - blank
- * 1 - body
- * 2 - water
- * 3 - hit
- */
-const ShipTypes = {
-  small: [[0, 0, 0], [0, 1, 0], [0, 1, 0]],
-  medium: [[0, 0, 0][(1, 1, 1)], [0, 1, 0]]
-};
-function BlankBoard() {
-  let board = [];
-  for (let i = 0; i < 10; i++) {
-    for (let o = 0; o < 10; o++) {
-      board.push({ type: Math.random() > 0.9 ? "explosion" : "blank" });
-    }
-  }
-  return board;
-}
-class Ship {
-  /**
-   * @type urcuje typ lodi: small,medium,tank
-   * @pos urcuje zakladni pozici lodi, pokud je to nutne
-   * @id urcuje o jakou konkretni lod se rovna, umozni v budoucnu vice modu
-
-   */
-  constructor(type, pos, id) {
-    this.type = type;
-    this.pos = pos;
-    this.dshape = "small";
-    this.id = id;
-  }
+function initial() {
+  let blank = BlankBoard();
+  blank = placeShip(blank, 10, ShipTypes.medium, "5", 41);
+  return placeShip(blank, 10, ShipTypes.small, "5", 7);
 }
 const initialState = {
   myboard: {
-    board: BlankBoard(),
+    board: initial(),
     ships: [
       {
         type: "small",
