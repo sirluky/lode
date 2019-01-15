@@ -11,9 +11,13 @@ class MyBoard extends Component {
           <div
             className={"cell " + e.type}
             key={index}
-            datakey={index}
+            id={e.id}
+            index={index}
             onClick={e => {
-              console.log(e.target.getAttribute("datakey"));
+              console.log(
+                e.target.getAttribute("index"),
+                e.target.getAttribute("id")
+              );
             }}
           >
              
