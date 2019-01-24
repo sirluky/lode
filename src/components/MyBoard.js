@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 class MyBoard extends Component {
   render() {
     return (
-      <div className="board myboard">
+      <div className="board myboard selectMode">
         {console.log(this.props)}
 
         {this.props.board.map((e, index) => (

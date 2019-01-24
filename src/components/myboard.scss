@@ -1,3 +1,9 @@
+$lod:orange;
+$oznacene:lightgreen;
+$exploze:palegoldenrod;
+$voda:cyan;
+
+
 .board {}
 
 .myboard {
@@ -15,13 +21,70 @@
   border: 1px black solid;
   display: inline-block;
 
-  background: cyan;
+  background: $voda;
 
   &.explosion {
-    background: palegoldenrod;
+    background: $exploze;
   }
 
   &.lod {
-    background: orange;
+    background: $lod;
+  }
+}
+
+.selectMode .cell:hover {
+  background: $oznacene;
+
+}
+
+.selectMode .cell.lod:hover {
+  background: mix($lod, $oznacene);
+
+}
+
+.shipSelect {
+  border: dashed red 1px;
+  grid-column: 6/12;
+
+  h1 {
+    margin: 10px auto 10px auto;
+    font-size: 25px;
+    text-align: center;
+  }
+
+  .nabidka {
+
+    display: block;
+
+    .lod {
+      background: rgba(255, 255, 255, 0.5);
+      border-radius: 3px;
+      padding: 7px 0;
+      margin: 3px 8px;
+
+      img {
+        border-radius: 5px;
+
+      }
+
+      p {
+        margin-top: -5px;
+        margin-bottom: 0;
+      }
+
+      text-align: center;
+
+      display: inline-block;
+      width: 150px;
+      transition: transform 0.3s;
+
+      &:not(.disabled):hover {
+        transform: scale(1.05);
+      }
+
+      &.disabled {
+        opacity: 0.6;
+      }
+    }
   }
 }

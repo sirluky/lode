@@ -5,6 +5,7 @@ import Visualization from "./components/Visualization";
 import ControlPanel from "./components/ControlPanel";
 import { Provider } from "react-redux";
 import store from "./store";
+import ShipSelect from "./components/ShipSelect";
 class App extends Component {
   render() {
     return (
@@ -15,6 +16,7 @@ class App extends Component {
             <ControlPanel />
             <div className="grid">
               <MyBoard />
+              <ShipSelect />
             </div>
           </div>
         </div>
