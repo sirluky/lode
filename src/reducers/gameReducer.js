@@ -4,22 +4,13 @@ import { ShipTypes } from "../assets/index";
 //statuses
 function initial() {
   let blank = BlankBoard();
-  blank = placeShip(blank, 10, ShipTypes.medium, "5", 41);
-  return placeShip(blank, 10, ShipTypes.small, "5", 7);
+  blank = placeShip(blank, 10, ShipTypes.medium, "2", 41);
+  return placeShip(blank, 10, ShipTypes.small, "1", 7);
 }
 const initialState = {
   myboard: {
     board: initial(),
-    ships: [
-      {
-        type: "small",
-        pos: false,
-        posShape: [17, 27],
-        shape: ShipTypes.small,
-        rotation: 0,
-        id: 0
-      }
-    ]
+    ships: []
   }
 };
 

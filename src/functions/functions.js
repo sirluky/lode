@@ -1,4 +1,5 @@
 import placeShip from "./placeShip";
 import BlankBoard from "./blankboard";
 import Ship from "./ship";
-export { placeShip, BlankBoard, Ship };
+import rotateGrid from "./rotategrid";
+export { placeShip, BlankBoard, Ship, rotateGrid };
