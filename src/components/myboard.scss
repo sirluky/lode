@@ -30,6 +30,10 @@ $voda:cyan;
   &.lod {
     background: $lod;
   }
+
+  &.nothing {
+    background: white;
+  }
 }
 
 .selectMode .cell:hover {
@@ -39,7 +43,6 @@ $voda:cyan;
 
 .selectMode .cell.lod:hover {
   background: mix($lod, $oznacene);
-
 }
 
 .shipSelect {
@@ -53,6 +56,7 @@ $voda:cyan;
   }
 
   .nabidka {
+    user-select: none;
 
     display: block;
 
@@ -64,7 +68,8 @@ $voda:cyan;
 
       img {
         border-radius: 5px;
-
+        cursor: pointer;
+        transition: all 0.2s;
       }
 
       p {
@@ -84,6 +89,12 @@ $voda:cyan;
 
       &.disabled {
         opacity: 0.6;
+      }
+
+      &.selected {
+        border: 1px green solid;
+        transform: scale(1.03);
+        background: mix(rgba(255, 255, 255, 0.5), rgba(70, 255, 70, 0.5));
       }
     }
   }
