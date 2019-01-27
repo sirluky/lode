@@ -1,3 +1,6 @@
+import mediumImg from "./images/lod-m.svg";
+import smallImg from "./images/lod-s.svg";
+
 /**
  *
  * 0 - blank,
@@ -6,6 +9,6 @@
  * 3 - hit,
  */
 export const ShipTypes = {
-  small: [[0, 0, 0], [0, 1, 0], [0, 1, 0]],
-  medium: [[0, 0, 0], [1, 1, 1], [0, 1, 0]]
+  small: { img: smallImg, model: [[0, 0, 0], [0, 1, 0], [0, 1, 0]] },
+  medium: { img: mediumImg, model: [[0, 1, 0], [0, 1, 1], [0, 1, 0]] }
 };
