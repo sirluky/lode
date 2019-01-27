@@ -1,24 +1,24 @@
 import React, { Component } from "react";
 import "./myboard.scss";
 import { connect } from "react-redux";
+import { placeBoat } from "../actions/gameActions";
 class MyBoard extends Component {
+  componentDidMount = () => {
+    // console.log(this.props);
+  };
+  cellClicked(e) {
+    this.props.placeBoat(parseInt(e.target.getAttribute("index")));
+  }
   render() {
     return (
       <div className="board myboard selectMode">
-        {console.log(this.props)}
-
         {this.props.board.map((e, index) => (
           <div
             className={"cell " + e.type}
             key={index}
             id={e.id}
             index={index}
-            onClick={e => {
-              console.log(
-                e.target.getAttribute("index"),
-                e.target.getAttribute("id")
-              );
-            }}
+            onClick={this.cellClicked.bind(this)}
           >
              
           </div>
@@ -29,7 +29,10 @@ class MyBoard extends Component {
 }
 
 const mapStateToProps = state => ({
-  board: state.game.myboard.board
+  board: state.game.board
 });
 
-export default connect(mapStateToProps)(MyBoard);
+export default connect(
+  mapStateToProps,
+  { placeBoat }
+)(MyBoard);
