@@ -1,7 +1,16 @@
-import { PLACE_BOAT, SELECT_BOAT } from "../actions/types";
-import { BlankBoard, placeShip } from "../functions/functions";
+import {
+  CHANGE_STATUS,
+  PLACE_BOAT,
+  SELECT_BOAT,
+  PLAYER_READY
+} from "../actions/types";
+import { BlankBoard } from "../functions/functions";
 import { Ship } from "../functions/functions";
+// import io from "socket.io-client";
+
+import { emit } from "../functions/socket";
 //statuses
+
 function initial() {
   // let blank = BlankBoard();
   // let myship = new Ship("medium", 51, "8");
@@ -18,24 +27,31 @@ const initialState = {
     offers: [{ type: "small", remaining: 2 }, { type: "medium", remaining: 3 }],
     placed: []
   },
+  status: "placing",
   cid: 10
 };
 
 export default function(state = initialState, action) {
   switch (action.type) {
+    case PLAYER_READY:
+      // console.log(state.ships.placed);
+      emit(PLAYER_READY, { ships: state.ships.placed });
+
+      return state;
     case PLACE_BOAT:
-      console.log(action);
+      // console.log(action);
       const copied = [...state.board];
       let nPlaced;
       let updated;
-      console.log(state.ships.rotation);
+
+      // console.log(state.ships.rotation);
       let boat;
       if (state.ships.selected !== "none") {
         boat = new Ship(state.ships.selected, action.pos, state.cid);
         boat.setRotation(state.ships.rotation);
         nPlaced = [...state.ships.placed, boat];
         updated = boat.setPos(action.pos, copied);
-        console.log("new", updated);
+        // console.log("new", updated);
       } else {
         nPlaced = [...state.ships.placed];
         updated = copied;
@@ -60,6 +76,11 @@ export default function(state = initialState, action) {
           selected: action.payload.type,
           rotation: rotation
         }
+      };
+    case CHANGE_STATUS:
+      return {
+        ...state,
+        status: action.status
       };
 
     default:
