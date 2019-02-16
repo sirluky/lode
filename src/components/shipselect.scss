@@ -1,0 +1,37 @@
+.rotate {
+  display: none;
+
+}
+
+.selected {
+  img:hover+.rotate {
+    // color: red;
+    // cursor: pointer;
+    display: inline-block;
+    position: relative;
+    height: 50;
+    width: 0;
+    margin: 0;
+    padding-top: -30;
+    z-index: 2;
+    color: "rgba(255,255,255,0.5)";
+    font-size: 80;
+    opacity: 0;
+    transform: "translate(-89px,-20px)";
+  }
+
+  .rotate:hover {
+    // color: red;
+    // cursor: pointer;
+    display: inline-block;
+    position: relative;
+    height: 50;
+    width: 0;
+    margin: 0;
+    padding-top: -30;
+    z-index: 2;
+    color: "rgba(255,255,255,0.5)";
+    font-size: 80;
+    transform: "translate(-89px,-20px)";
+  }
+}
