@@ -4,6 +4,8 @@ import { connect } from "react-redux";
 import { ShipTypes } from "../assets/index";
 import { selectBoat } from "../actions/gameActions";
 import rotate from "../functions/rotategrid";
+import "./shipselect.scss";
+
 class ShipSelect extends Component {
   componentDidMount = () => {
     console.log(this.props.ships);
@@ -32,6 +34,27 @@ class ShipSelect extends Component {
                     90}deg)`
                 }}
               />
+              <i
+                alt={boat.type}
+                onClick={this.props.selectBoat}
+                style={{
+                  // position: "absolute",
+
+                  height: 50,
+                  width: 0,
+                  margin: 0,
+                  transform: "rotate(120deg)",
+                  transition: "opacity 0.3s",
+                  cursor: "pointer",
+                  paddingTop: -30,
+                  zIndex: 2,
+                  fontSize: 80,
+                  color: "rgba(255,255,255,0.5)",
+                  transform: "translate(-89px,-20px)"
+                }}
+                class="fas fa-sync-alt rotate"
+              />
+
               <p>{boat.remaining} kusu</p>
             </div>
           ))}
