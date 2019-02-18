@@ -15,4 +15,4 @@ let emit = (type, data) => {
   // console.log(socket);
 };
 
-export { emit, on };
+export { emit, on, socket };
