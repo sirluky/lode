@@ -1,0 +1,63 @@
+$lod:orange;
+$oznacene:tomato;
+$exploze:rgb(170, 164, 93);
+$voda:cyan;
+
+.mine {
+  grid-column-start: 2;
+  grid-column-end: 6;
+}
+
+.enemy {
+  grid-column-start: 8;
+  grid-column-end: 12;
+
+}
+
+.mine,
+.enemy {
+  border: 3px black solid;
+  display: block;
+  user-select: none;
+
+
+
+  .cell {
+    width: 31.5px;
+    height: 31.5px;
+    border: 1px black solid;
+    display: inline-block;
+
+    background: $voda;
+
+    &.shiphit {
+      background: $exploze;
+    }
+
+    &.missed {
+      background: $exploze;
+    }
+
+    &.lod {
+      background: $lod;
+    }
+
+    &.nothing {
+      background: white;
+    }
+  }
+
+  // &.attackMode .cell:hover {
+  //   
+
+  // }
+
+  &.attackMode .cell:hover:not(.missed):not(.shiphit) {
+    background: $oznacene;
+    cursor: pointer;
+  }
+
+  &.attackMode .cell.lod:hover {
+    background: mix($lod, $oznacene);
+  }
+}
