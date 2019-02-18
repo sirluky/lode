@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import "./myboard.scss";
 import { connect } from "react-redux";
 import { placeBoat } from "../actions/gameActions";
-import { emit, on } from "../functions/socket";
+// import { emit, on } from "../functions/socket";
 
 class MyBoard extends Component {
   componentDidMount = () => {
