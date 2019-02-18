@@ -2,6 +2,7 @@ $lod:orange;
 $oznacene:tomato;
 $exploze:rgb(170, 164, 93);
 $voda:cyan;
+$vedle: darkblue;
 
 .mine {
   grid-column-start: 2;
@@ -35,7 +36,7 @@ $voda:cyan;
     }
 
     &.missed {
-      background: $exploze;
+      background: $vedle;
     }
 
     &.lod {
