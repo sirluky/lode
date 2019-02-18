@@ -1,9 +1,9 @@
 import React, { Component } from "react";
-import lodM from "../assets/images/lod-m.svg";
+// import lodM from "../assets/images/lod-m.svg";
 import { connect } from "react-redux";
 import { ShipTypes } from "../assets/index";
 import { selectBoat } from "../actions/gameActions";
-import rotate from "../functions/rotategrid";
+// import rotate from "../functions/rotategrid";
 import "./shipselect.scss";
 
 class ShipSelect extends Component {
@@ -19,7 +19,8 @@ class ShipSelect extends Component {
             <div
               className={
                 "lod " +
-                (this.props.ships.selected === boat.type ? "selected" : "")
+                (this.props.ships.selected === boat.type ? "selected" : "") +
+                (boat.remaining > 0 ? "" : " soldOut")
               }
               key={boat.type}
               datakey={boat.type}
@@ -52,7 +53,7 @@ class ShipSelect extends Component {
                   color: "rgba(255,255,255,0.5)",
                   transform: "translate(-89px,-20px)"
                 }}
-                class="fas fa-sync-alt rotate"
+                className="fas fa-sync-alt rotate"
               />
 
               <p>{boat.remaining} kusu</p>
