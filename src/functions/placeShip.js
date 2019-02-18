@@ -1,4 +1,4 @@
-import { rotateGrid } from "../functions/functions";
+// import { rotateGrid } from "../functions/functions";
 
 /**
  *
@@ -12,7 +12,7 @@ import { rotateGrid } from "../functions/functions";
  */
 export default function placeShip(arr, size = 10, ship) {
   console.log(ship);
-  let toDelete = [];
+  // let toDelete = [];
   let success = false;
   console.log(ship.pos);
   if (ship.pos % 10 > 0 && ship.pos % 10 < 9) {
