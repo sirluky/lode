@@ -3,7 +3,7 @@
 
 }
 
-.selected {
+.selected:not(.soldOut) {
   img:hover+.rotate {
     // color: red;
     // cursor: pointer;
@@ -33,5 +33,68 @@
     color: "rgba(255,255,255,0.5)";
     font-size: 80;
     transform: "translate(-89px,-20px)";
+  }
+}
+
+.soldOut img {
+  opacity: 0.5;
+}
+
+.shipSelect {
+  border: dashed red 1px;
+  grid-column: 6/12;
+
+  h1 {
+    margin: 10px auto 10px auto;
+    font-size: 25px;
+    text-align: center;
+  }
+
+  .nabidka {
+    user-select: none;
+
+    display: block;
+
+    .lod {
+      background: rgba(255, 255, 255, 0.5);
+      border-radius: 3px;
+      padding: 7px 0;
+      margin: 3px 8px;
+
+      &:not(.soldOut) {
+        img {
+          border-radius: 5px;
+          cursor: pointer;
+          transition: all 0.2s;
+        }
+
+        &:hover {
+          transform: scale(1.05);
+        }
+      }
+
+      p {
+        margin-top: -5px;
+        margin-bottom: 0;
+      }
+
+      text-align: center;
+
+      display: inline-block;
+      width: 150px;
+      transition: transform 0.3s;
+
+
+
+      &.disabled {
+        opacity: 0.6;
+      }
+
+      &.selected:not(.soldOut) {
+        border: 1px green solid;
+        transform: scale(1.03);
+        background: mix(rgba(255, 255, 255, 0.5), rgba(70, 255, 70, 0.5));
+      }
+    }
   }
 }
