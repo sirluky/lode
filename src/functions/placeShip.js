@@ -13,10 +13,10 @@
 export default function placeShip(arr, size = 10, ship) {
   console.log(ship);
   // let toDelete = [];
-  let success = false;
+  // let success = false;
   console.log(ship.pos);
   if (ship.pos % 10 > 0 && ship.pos % 10 < 9) {
-    success = true;
+    // success = true
     // if (ship.prev.pos !== null) {
     //   let prevship = rotateGrid(ship.dmodel, ship.prev.rotation);
     //   prevship.forEach((row, oy) =>
