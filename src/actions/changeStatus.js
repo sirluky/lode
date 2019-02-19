@@ -6,7 +6,7 @@ export default function changestatus(status = "lobby", data) {
     dispatch({
       type: CHANGE_STATUS,
       status: status,
-      enemydata: data
+      data
     });
   };
 }
