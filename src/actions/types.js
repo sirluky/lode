@@ -6,3 +6,6 @@ export const CHANGE_STATUS = "CHANGE_STATUS";
 
 export const SHOOT = "SHOOT";
 export const HIT = "HIT";
+
+export const JOIN_GAME = "JOIN_GAME";
+export const GAME_PLACEMENT_STARTS = "GAME_PLACEMENT_STARTS";
