@@ -1,23 +1,14 @@
 import { SHOOT } from "./types";
-import { socket, emit } from "../functions/socket";
-export default function shoot(element) {
+import { emit, onOnce } from "../functions/socket";
+export default function shoot(pos) {
   return async function(dispatch) {
-    emit("zpozdeni", "nic");
-    let nothing = await ioOnce();
+    emit(SHOOT, pos);
+    let nothing = await onOnce(SHOOT);
 
     await dispatch({
       type: SHOOT,
-      position: element,
+      position: pos,
       hit: nothing
     });
   };
-}
-
-function ioOnce() {
-  return new Promise(resolve => {
-    socket.once("zpozdeni", function(data) {
-      // console.log(data);
-      resolve(data);
-    });
-  });
 }
