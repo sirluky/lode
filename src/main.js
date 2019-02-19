@@ -8,8 +8,12 @@ import { changeStatus } from "./actions/gameActions";
 
 import { connect } from "react-redux";
 // import { placeBoat } from "../actions/gameActions";
-import { on } from "./functions/socket";
-import { CHANGE_STATUS } from "./actions/types";
+import { on, emit } from "./functions/socket";
+import {
+  CHANGE_STATUS,
+  GAME_PLACEMENT_STARTS,
+  JOIN_GAME
+} from "./actions/types";
 import Boards from "./ingame-components/boards";
 class App extends Component {
   componentDidMount = () => {
@@ -17,6 +21,13 @@ class App extends Component {
     on(CHANGE_STATUS, data => {
       this.props.changeStatus("ingame", data);
     });
+    on(GAME_PLACEMENT_STARTS, data => {
+      this.props.changeStatus("placing", data);
+      alert("placement starts");
+    });
+    setTimeout(() => {
+      emit(JOIN_GAME, { nick: "Karel123" });
+    }, 1000);
   };
   render() {
     return (
@@ -24,7 +35,9 @@ class App extends Component {
         <div className="container">
           <Visualization />
           <ControlPanel />
-          {this.props.status === "placing" ? (
+          {this.props.status === "lobby" ? (
+            <div>Lobby</div>
+          ) : this.props.status === "placing" ? (
             <div className="grid">
               <MyBoard />
               <ShipSelect />
