@@ -24,13 +24,15 @@ function initial() {
 const initialState = {
   board: initial(),
   enemyboard: initial(),
+  nick: "Guest",
+  enemynick: "Guest",
   ships: {
     selected: "none",
     rotation: 1,
     offers: [{ type: "small", remaining: 2 }, { type: "medium", remaining: 3 }],
     placed: []
   },
-  status: "placing",
+  status: "lobby",
   cid: 10
 };
 
@@ -48,8 +50,11 @@ export default function(state = initialState, action) {
       };
     case HIT:
       const board = state.board;
-      if (action.hit) board[action.position].type = "shiphit";
+      // alert(action.position);
+      // if (board[action.position].type === "lod")
+      if (action.shiphit) board[action.position].type = "shiphit";
       else {
+        // console.log(board[action.position].type);
         board[action.position].type = "missed";
       }
 
@@ -118,12 +123,25 @@ export default function(state = initialState, action) {
         }
       };
     case CHANGE_STATUS:
-      let enemyboard = action.enemydata.enemyboard;
-      return {
-        ...state,
-        enemyboard,
-        status: action.status
-      };
+      if (action.status === "ingame") {
+        let enemyboard = action.data.enemyboard;
+        let myboard = action.data.myboard;
+        return {
+          ...state,
+          enemyboard,
+          board: myboard,
+          status: action.status
+        };
+      }
+      if (action.status === "placing") {
+        return {
+          ...state,
+          status: action.status,
+          nick: "sirluky" + Math.floor(Math.random() * 10),
+          enemynick: action.data.nick
+        };
+      }
+      return state;
 
     default:
       return {
