@@ -1,12 +1,11 @@
 import { HIT } from "./types";
 
-export default function playerReady(element) {
+export default function Hit(hitdata) {
   return async function(dispatch) {
-    await setTimeout(() => 1 + 1, 500);
     dispatch({
       type: HIT,
-      position: element,
-      hit: true
+      position: hitdata.pos,
+      shiphit: hitdata.shiphit
     });
   };
 }
