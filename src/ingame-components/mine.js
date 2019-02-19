@@ -1,19 +1,16 @@
 import React, { Component } from "react";
 import "./boards.scss";
 import { connect } from "react-redux";
-// import { emit, on } from "../functions/socket";
 import { hit } from "../actions/gameActions";
+import { on } from "../functions/socket";
+import { HIT } from "../actions/types";
 
 class BattleBoard extends Component {
-  componentDidMount = () => {};
-
-  // cellClicked(e) {
-  // }
-  // componentReady = () => {
-  //   console.log(this.props);
-  //   // emit();
-
-  // };
+  componentDidMount = () => {
+    on(HIT, pos => {
+      this.props.hit(pos);
+    });
+  };
 
   render() {
     return (
@@ -32,4 +29,7 @@ const mapStateToProps = state => ({
   board: state.game.board
 });
 
-export default connect(mapStateToProps)(BattleBoard);
+export default connect(
+  mapStateToProps,
+  { hit }
+)(BattleBoard);
