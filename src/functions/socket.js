@@ -14,5 +14,17 @@ let emit = (type, data) => {
   socket.emit(type, data);
   // console.log(socket);
 };
+/**
+ *
+ * @param {*} type typ eventu
+ *
+ */
+function onOnce(type) {
+  return new Promise(resolve => {
+    socket.once(type, function(data) {
+      resolve(data);
+    });
+  });
+}
 
-export { emit, on, socket };
+export { emit, on, socket, onOnce };
