@@ -11,7 +11,8 @@ class MyBoard extends Component {
   };
 
   cellClicked(e) {
-    this.props.placeBoat(parseInt(e.target.getAttribute("index")));
+    if (e.target.getAttribute("type") === "blank")
+      this.props.placeBoat(parseInt(e.target.getAttribute("index")));
   }
   // componentReady = () => {
   //   console.log(this.props);
@@ -27,6 +28,7 @@ class MyBoard extends Component {
             className={"cell " + e.type}
             key={index}
             id={e.id}
+            type={e.type}
             index={index}
             onClick={this.cellClicked.bind(this)}
           >
