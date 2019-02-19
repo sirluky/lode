@@ -8,17 +8,21 @@ class ControlPanel extends Component {
     return (
       <div className="controlPanel">
         <div className="wrapper">
-          <div className="mytime time">00:00</div>
+          {console.log(this.props)}
+          <div className="mytime time">{this.props.mynick}</div>
           <div className="exit time" onClick={e => this.props.playerReady()}>
             Ukončit
           </div>
-          <div className="opponentTime time">00:00</div>
+          <div className="opponentTime time">{this.props.ennick}</div>
         </div>
       </div>
     );
   }
 }
-const mapStateToProps = state => ({});
+const mapStateToProps = state => ({
+  mynick: state.game.nick,
+  ennick: state.game.enemynick
+});
 export default connect(
   mapStateToProps,
   { playerReady }
