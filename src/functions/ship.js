@@ -10,7 +10,7 @@ import { rotateGrid, placeShip } from "../functions/functions";
 
    */
 export default class Ship {
-  constructor(type, pos, id) {
+  constructor(type, pos, id = 999) {
     this.type = type;
     this.pos = pos;
     this.touchedPos = pos + 11;
