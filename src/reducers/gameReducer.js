@@ -26,6 +26,7 @@ const initialState = {
   enemyboard: initial(),
   nick: "Guest",
   enemynick: "Guest",
+  onturn: false,
   ships: {
     selected: "none",
     rotation: 1,
@@ -46,6 +47,7 @@ export default function(state = initialState, action) {
       }
       return {
         ...state,
+        onturn: !state.onturn,
         enemyboard: [...enboard]
       };
     case HIT:
@@ -60,6 +62,7 @@ export default function(state = initialState, action) {
 
       return {
         ...state,
+        onturn: !state.onturn,
         board: [...board]
       };
     case PLAYER_READY:
@@ -128,6 +131,7 @@ export default function(state = initialState, action) {
         let myboard = action.data.myboard;
         return {
           ...state,
+          onturn: action.data.onturn,
           enemyboard,
           board: myboard,
           status: action.status
@@ -139,6 +143,12 @@ export default function(state = initialState, action) {
           status: action.status,
           nick: "sirluky" + Math.floor(Math.random() * 10),
           enemynick: action.data.nick
+        };
+      }
+      if (action.status === "waiting") {
+        return {
+          ...state,
+          status: action.status
         };
       }
       return state;
