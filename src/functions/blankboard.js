@@ -1,7 +1,7 @@
-export default function BlankBoard() {
+export default function BlankBoard(size = 10) {
   let board = [];
-  for (let i = 0; i < 10; i++) {
-    for (let o = 0; o < 10; o++) {
+  for (let i = 0; i < size; i++) {
+    for (let o = 0; o < size; o++) {
       board.push({
         id: "0",
         type: "blank"
