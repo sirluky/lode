@@ -23,7 +23,7 @@ class App extends Component {
     });
     on(GAME_PLACEMENT_STARTS, data => {
       this.props.changeStatus("placing", data);
-      alert("placement starts");
+      // alert("placement starts");
     });
     setTimeout(() => {
       emit(JOIN_GAME, { nick: "Karel123" });
@@ -35,7 +35,7 @@ class App extends Component {
         <div className="container">
           <Visualization />
           <ControlPanel />
-          {this.props.status === "lobby" ? (
+          {this.props.status === "lobby" || this.props.status === "waiting" ? (
             <div>Lobby</div>
           ) : this.props.status === "placing" ? (
             <div className="grid">
