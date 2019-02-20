@@ -7,16 +7,27 @@ $vedle: darkblue;
 .mine {
   grid-column-start: 2;
   grid-column-end: 6;
+
+  &.onturn {
+    box-shadow: 1px 1px 8px 5px red;
+
+  }
 }
 
 .enemy {
   grid-column-start: 8;
   grid-column-end: 12;
 
+  &.onturn {
+    box-shadow: 1px 1px 8px 5px green;
+
+  }
+
 }
 
 .mine,
 .enemy {
+  transition: box-shadow 1s;
   border: 3px black solid;
   display: block;
   user-select: none;
