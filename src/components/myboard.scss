@@ -9,12 +9,14 @@ $voda:cyan;
   display: block;
   grid-column-start: 2;
   grid-column-end: 6;
+  padding: 0;
   user-select: none;
 
 
 
   .cell {
     width: 31.5px;
+    z-index: 2;
     height: 31.5px;
     border: 1px black solid;
     display: inline-block;
@@ -35,5 +37,40 @@ $voda:cyan;
 
   &.selectMode .cell.lod:hover {
     background: mix($lod, $oznacene);
+  }
+
+
+}
+
+.nahled {
+  position: absolute;
+  padding: 0;
+  opacity: 0.8;
+
+
+
+  .cell {
+    width: 31.5px;
+    height: 31.5px;
+    border: none;
+    // visibility: collapse;
+    display: inline-block;
+    background: none;
+    // z-index: -1000;
+    // background: $voda;
+    border: 1px transparent solid;
+
+
+
+    &.lod {
+      visibility: visible;
+      border: 1px black solid;
+
+      z-index: 3;
+
+
+      // background: $lod;
+      background: red;
+    }
   }
 }
