@@ -8,7 +8,8 @@ class BattleBoard extends Component {
 
   cellClicked(e) {
     // console.log(e.target.getAttribute("shot"));
-    if (e.target.getAttribute("shot"))
+
+    if (this.props.onturn && e.target.getAttribute("shot"))
       this.props.shoot(parseInt(e.target.getAttribute("index")));
   }
   // componentReady = () => {
@@ -19,7 +20,11 @@ class BattleBoard extends Component {
 
   render() {
     return (
-      <div className="board enemy attackMode">
+      <div
+        className={`board enemy ${
+          this.props.onturn ? "attackMode onturn" : ""
+        }`}
+      >
         {this.props.board.map((e, index) => (
           <div
             className={"cell " + e.type}
@@ -37,7 +42,8 @@ class BattleBoard extends Component {
 }
 
 const mapStateToProps = state => ({
-  board: state.game.enemyboard
+  board: state.game.enemyboard,
+  onturn: state.game.onturn
 });
 
 export default connect(
