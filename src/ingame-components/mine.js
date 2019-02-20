@@ -14,7 +14,7 @@ class BattleBoard extends Component {
 
   render() {
     return (
-      <div className="board mine">
+      <div className={`board mine ${this.props.onturn ? "" : "onturn"}`}>
         {this.props.board.map((e, index) => (
           <div className={"cell " + e.type} key={index}>
              
@@ -26,7 +26,8 @@ class BattleBoard extends Component {
 }
 
 const mapStateToProps = state => ({
-  board: state.game.board
+  board: state.game.board,
+  onturn: state.game.onturn
 });
 
 export default connect(
