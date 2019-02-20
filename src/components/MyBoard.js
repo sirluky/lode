@@ -2,18 +2,47 @@ import React, { Component } from "react";
 import "./myboard.scss";
 import { connect } from "react-redux";
 import { placeBoat } from "../actions/gameActions";
+import NahledLode from "../components/NahledLode";
 // import { emit, on } from "../functions/socket";
 
 class MyBoard extends Component {
+  state = {
+    selectedPos: 15,
+    previewOn: false,
+    nahledOn: false
+    // previewrunning: false
+  };
   componentDidMount = () => {
     // console.log(this.props);
     // setTimeout(this.componentReady, 1000);
   };
 
-  cellClicked(e) {
+  cellClicked = e => {
+    if (typeof e === "number") {
+      this.props.placeBoat(e - 4);
+      // console.log(e);
+    } else {
+      if (e.target.getAttribute("type") === "blank")
+        this.props.placeBoat(parseInt(e.target.getAttribute("index")));
+    }
+  };
+  previewHere = e => {
     if (e.target.getAttribute("type") === "blank")
-      this.props.placeBoat(parseInt(e.target.getAttribute("index")));
-  }
+      this.setState({
+        selectedPos: e.target.getAttribute("index"),
+        previewOn: true
+      });
+  };
+  fromPreview = pos => {
+    this.setState({
+      selectedPos: pos
+      // previewOn: false
+    });
+  };
+  previewStatus = val => {
+    this.setState({ nahledOn: val });
+  };
+
   // componentReady = () => {
   //   console.log(this.props);
   //   // emit();
@@ -22,7 +51,26 @@ class MyBoard extends Component {
 
   render() {
     return (
-      <div className="board myboard selectMode">
+      <div
+        className="board myboard selectMode"
+        onMouseLeave={event => {
+          var e = event.toElement || event.relatedTarget;
+          if (e.parentNode == this || e == this) {
+            return;
+          }
+          this.setState({ previewOn: false });
+        }}
+      >
+        <NahledLode
+          previewOn={this.state.previewOn}
+          pos={this.state.selectedPos}
+          type={this.props.selected}
+          rotation={this.props.rotation}
+          setLoc={this.fromPreview}
+          previewStatus={this.previewStatus}
+          nahledOn={this.nahledOn}
+          cellClicked={this.cellClicked}
+        />
         {this.props.board.map((e, index) => (
           <div
             className={"cell " + e.type}
@@ -31,6 +79,7 @@ class MyBoard extends Component {
             type={e.type}
             index={index}
             onClick={this.cellClicked.bind(this)}
+            onMouseEnter={e => this.previewHere(e)}
           >
              
           </div>
@@ -41,7 +90,9 @@ class MyBoard extends Component {
 }
 
 const mapStateToProps = state => ({
-  board: state.game.board
+  board: state.game.board,
+  selected: state.game.ships.selected,
+  rotation: state.game.ships.rotation
 });
 
 export default connect(
