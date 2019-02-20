@@ -11,52 +11,52 @@
  *
  */
 export default function placeShip(arr, size = 10, ship) {
-  console.log(ship);
+  // console.log(ship);
   // let toDelete = [];
   // let success = false;
-  console.log(ship.pos);
-  if (ship.pos % 10 > 0 && ship.pos % 10 < 9) {
-    // success = true
-    // if (ship.prev.pos !== null) {
-    //   let prevship = rotateGrid(ship.dmodel, ship.prev.rotation);
-    //   prevship.forEach((row, oy) =>
-    //     row.forEach((cell, ox) => {
-    //       if (cell === 1) {
-    //         let cellPos = ship.prev.pos + oy * size + ox - 11;
-    //         // const arrcell = arr[cellPos];
-    //         // if (arrcell.id == ship.id) {
-    //         toDelete.push(cellPos);
-    //         // }
-    //       }
-    //     })
-    //   );
-    // }
+  // console.log(ship.pos);
+  // if (ship.pos % size > 0 && ship.pos % size < size - 1) {
+  // success = true
+  // if (ship.prev.pos !== null) {
+  //   let prevship = rotateGrid(ship.dmodel, ship.prev.rotation);
+  //   prevship.forEach((row, oy) =>
+  //     row.forEach((cell, ox) => {
+  //       if (cell === 1) {
+  //         let cellPos = ship.prev.pos + oy * size + ox - 11;
+  //         // const arrcell = arr[cellPos];
+  //         // if (arrcell.id == ship.id) {
+  //         toDelete.push(cellPos);
+  //         // }
+  //       }
+  //     })
+  //   );
+  // }
 
-    ship.cmodel.forEach((row, ty) =>
-      row.forEach((modelcell, tx) => {
-        if (modelcell !== 0) {
-          let cpos = ty * size + ship.pos + tx;
-          cpos -= 11;
+  ship.cmodel.forEach((row, ty) =>
+    row.forEach((modelcell, tx) => {
+      if (modelcell !== 0) {
+        let cpos = ty * size + ship.pos + tx;
+        cpos -= size - 1;
 
-          // let toSplice = null;
+        // let toSplice = null;
 
-          // toDelete.forEach((e, index) => {
-          //   if (e === cpos) {
-          //     toSplice = index;
-          //   }
-          // });
+        // toDelete.forEach((e, index) => {
+        //   if (e === cpos) {
+        //     toSplice = index;
+        //   }
+        // });
 
-          // if (toSplice !== null) {
-          //   toDelete.splice(toSplice, 1);
-          // }
-          arr[cpos] = { id: ship.id, type: "lod" };
-        }
-      })
-    );
-    // toDelete.forEach(index => {
-    //   arr[index] = { id: 0, type: "blank" };
-    // });
-    // const last = arr[ty * size + ship.pos + tx];
-  }
+        // if (toSplice !== null) {
+        //   toDelete.splice(toSplice, 1);
+        // }
+        arr[cpos] = { id: ship.id, type: "lod" };
+      }
+    })
+  );
+  // toDelete.forEach(index => {
+  //   arr[index] = { id: 0, type: "blank" };
+  // });
+  // const last = arr[ty * size + ship.pos + tx];
+
   return arr;
 }
