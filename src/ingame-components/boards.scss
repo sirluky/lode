@@ -57,7 +57,10 @@ $vedle: darkblue;
     &.nothing {
       background: white;
     }
+
+
   }
+
 
   // &.attackMode .cell:hover {
   //   
@@ -72,4 +75,5 @@ $vedle: darkblue;
   &.attackMode .cell.lod:hover {
     background: mix($lod, $oznacene);
   }
+
 }
