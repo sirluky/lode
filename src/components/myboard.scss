@@ -22,7 +22,7 @@ $voda:cyan;
     display: inline-block;
 
     background: $voda;
-
+    cursor: pointer;
 
 
     &.lod {
@@ -30,13 +30,14 @@ $voda:cyan;
     }
   }
 
-  &.selectMode .cell:hover {
+  &.selectMode .cell:not(.lod):hover {
     background: $oznacene;
 
   }
 
-  &.selectMode .cell.lod:hover {
+  &.selectMode .cell:not(.lod):hover {
     background: mix($lod, $oznacene);
+
   }
 
 
@@ -60,7 +61,11 @@ $voda:cyan;
     // background: $voda;
     border: 1px transparent solid;
 
+    // .placeable {
+    //   background: darkgreen;
 
+    // }
+    // background: pink;
 
     &.lod {
       visibility: visible;
@@ -71,6 +76,25 @@ $voda:cyan;
 
       // background: $lod;
       background: red;
+    }
+
+    &.nic {
+      background: yellow;
+
+    }
+
+  }
+
+  &.placeable {
+    .lod {
+      visibility: visible;
+      border: 1px black solid;
+
+      z-index: 3;
+
+
+      // background: $lod;
+      background: darkgreen;
     }
   }
 }
