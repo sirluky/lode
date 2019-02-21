@@ -2,6 +2,8 @@ import React from "react";
 import Ship from "../functions/ship";
 import placeShip from "../functions/placeShip";
 import blankboard from "../functions/blankboard";
+import cutBoard from "../functions/cutBoard";
+
 export default function NahledLode({
   type,
   pos,
@@ -10,14 +12,21 @@ export default function NahledLode({
   previewOn,
   nahledOn,
   previewStatus,
-  cellClicked
+  cellClicked,
+  fullBoard
 }) {
   console.log(type);
   console.log(rotation);
   let pomlod = new Ship(type, 10);
   let centeredpos = pos;
+  const overPlaceholder = { id: "1234", type: "nic" };
   pomlod.setRotation(rotation);
-  let shipbody = placeShip(blankboard(5), 5, pomlod);
+
+  let smallboard = cutBoard(fullBoard, 10, pos - 22, 5, overPlaceholder);
+
+  let lzepolozit = placeShip(smallboard, 5, pomlod, true);
+  smallboard = placeShip(blankboard(5), 5, pomlod);
+
   // console.log(shipbody);
 
   return (
@@ -29,14 +38,15 @@ export default function NahledLode({
         }}
       >
         <div
-          className="nahled"
+          className={"nahled " + (lzepolozit ? "placeable" : "")} // +
           style={{
             width: 168,
+            height: 168,
             left: 33.5 * (centeredpos % 10) - 67,
             top: 33.5 * (Math.floor(centeredpos / 10) - 2)
           }}
         >
-          {shipbody.map((e, index) => (
+          {smallboard.map((e, index) => (
             <div
               key={index}
               index={index}
@@ -59,14 +69,15 @@ export default function NahledLode({
                 );
               }}
               onClick={e => {
-                previewStatus(true);
-                let index = parseInt(e.target.getAttribute("index"));
-                cellClicked(
-                  parseInt(centeredpos) +
-                    (index % 5) +
-                    Math.floor(index / 5) * 10 -
-                    20
-                );
+                if (lzepolozit) {
+                  let index = parseInt(e.target.getAttribute("index"));
+                  cellClicked(
+                    parseInt(centeredpos) +
+                      (index % 5) +
+                      Math.floor(index / 5) * 10 -
+                      20
+                  );
+                }
               }}
               // onMouseLeave={e => {
               //   previewStatus(false);
