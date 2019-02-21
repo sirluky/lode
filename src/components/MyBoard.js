@@ -54,10 +54,6 @@ class MyBoard extends Component {
       <div
         className="board myboard selectMode"
         onMouseLeave={event => {
-          var e = event.toElement || event.relatedTarget;
-          if (e.parentNode == this || e == this) {
-            return;
-          }
           this.setState({ previewOn: false });
         }}
       >
@@ -70,6 +66,7 @@ class MyBoard extends Component {
           previewStatus={this.previewStatus}
           nahledOn={this.nahledOn}
           cellClicked={this.cellClicked}
+          fullBoard={this.props.board}
         />
         {this.props.board.map((e, index) => (
           <div
