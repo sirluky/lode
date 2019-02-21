@@ -19,7 +19,7 @@ export default class Ship {
     this.id = id;
     this.hp = ShipTypes.hp;
     this.rotation = 1;
-    this.prev = { rotation: 1, pos: pos + 11 };
+    // this.prev = { rotation: 1, pos: pos + 11 };
   }
   setRotation(r) {
     this.rotation = r;
@@ -33,7 +33,7 @@ export default class Ship {
     this.cmodel = rotateGrid(this.dmodel, this.rotation);
   }
   setPos(pos, arr) {
-    this.prev.pos = this["pos"];
+    // this.prev.pos = this["pos"];
     this.pos = pos;
     if (arr !== undefined) {
       return placeShip(arr, 10, this);
