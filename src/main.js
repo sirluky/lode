@@ -5,7 +5,7 @@ import Visualization from "./components/Visualization";
 import ControlPanel from "./components/ControlPanel";
 import ShipSelect from "./components/ShipSelect";
 import { changeStatus } from "./actions/gameActions";
-
+import Lobby from "./components/lobby";
 import { connect } from "react-redux";
 // import { placeBoat } from "../actions/gameActions";
 import { on, emit } from "./functions/socket";
@@ -25,9 +25,6 @@ class App extends Component {
       this.props.changeStatus("placing", data);
       // alert("placement starts");
     });
-    setTimeout(() => {
-      emit(JOIN_GAME, { nick: "Karel123" });
-    }, 1000);
   };
   render() {
     return (
@@ -35,9 +32,10 @@ class App extends Component {
         <div className="container">
           <Visualization />
           <ControlPanel />
-          {this.props.status === "lobby" || this.props.status === "waiting" ? (
-            <div>Lobby</div>
-          ) : this.props.status === "placing" ? (
+          {this.props.status === "lobby" ? (
+            <Lobby />
+          ) : this.props.status === "placing" ||
+            this.props.status === "waiting" ? (
             <div className="grid">
               <MyBoard />
               <ShipSelect />
