@@ -4,7 +4,9 @@ import {
   SELECT_BOAT,
   PLAYER_READY,
   SHOOT,
-  HIT
+  HIT,
+  CHANGE_NICK,
+  JOIN_GAME
 } from "../actions/types";
 import { BlankBoard } from "../functions/functions";
 import { Ship } from "../functions/functions";
@@ -26,6 +28,7 @@ const initialState = {
   enemyboard: initial(),
   nick: "Guest",
   enemynick: "Guest",
+  message: "_",
   onturn: false,
   ships: {
     selected: "none",
@@ -70,6 +73,11 @@ export default function(state = initialState, action) {
       emit(PLAYER_READY, { ships: state.ships.placed });
 
       return state;
+    case CHANGE_NICK:
+      return {
+        ...state,
+        nick: action.nick
+      };
     case PLACE_BOAT:
       // console.log(action);
       const copied = [...state.board];
@@ -99,8 +107,10 @@ export default function(state = initialState, action) {
             ...state,
             cid: state.cid + 1,
             board: updated,
+
             ships: {
               ...state.ships,
+              selected: "none",
               offers: [...state.ships.offers],
               placed: nPlaced
             }
@@ -129,6 +139,7 @@ export default function(state = initialState, action) {
       if (action.status === "ingame") {
         let enemyboard = action.data.enemyboard;
         let myboard = action.data.myboard;
+        console.log(myboard.length, state.board.length);
         return {
           ...state,
           onturn: action.data.onturn,
@@ -137,12 +148,16 @@ export default function(state = initialState, action) {
           status: action.status
         };
       }
+      if (action.status === JOIN_GAME) {
+        return { ...state, message: "Hledání soupeře" };
+      }
       if (action.status === "placing") {
         return {
           ...state,
           status: action.status,
-          nick: "sirluky" + Math.floor(Math.random() * 10),
-          enemynick: action.data.nick
+          // nick: ,
+          enemynick:
+            action.data.nick.length > 0 ? action.data.nick : "noname kokot"
         };
       }
       if (action.status === "waiting") {

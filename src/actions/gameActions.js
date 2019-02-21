@@ -4,5 +4,14 @@ import playerReady from "./PlayerReady";
 import changeStatus from "./changeStatus";
 import hit from "./hit";
 import shoot from "./shoot";
+import changeNick from "./changeNick";
 
-export { placeBoat, selectBoat, playerReady, changeStatus, hit, shoot };
+export {
+  placeBoat,
+  selectBoat,
+  playerReady,
+  changeStatus,
+  hit,
+  shoot,
+  changeNick
+};
