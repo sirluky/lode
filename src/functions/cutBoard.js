@@ -25,12 +25,16 @@ export default function cutBoard(
 
   // console.log(twoD);
   let cutarr = [];
+  let centering = Math.floor(csize / 2);
+  // let centering = 0;
 
-  let ypos = Math.floor(pos / dsize);
-  let xpos = pos % dsize;
+  let ypos = Math.floor(pos / dsize) - centering;
+  let xpos = (pos % dsize) - centering;
 
   let xuntil = xpos + csize;
   let yuntil = ypos + csize;
+  // pos -= 22;
+
   // if (mode) {
   //   let pomarr = [];
   //   while (yuntil > ypos) {
