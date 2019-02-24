@@ -13,9 +13,10 @@ export class lobby extends Component {
           maxLength="20"
           type="text"
           placeholder="Guest"
-          value={this.props.nick}
+          // value={this.props.nick}
           onChange={e => this.props.changeNick(e.target.value)}
         />
+        {console.log(this.props)}
         <h3>{this.props.message}</h3>
       </div>
     );
@@ -23,8 +24,8 @@ export class lobby extends Component {
 }
 
 const mapStateToProps = state => ({
-  nick: state.nick,
-  message: state.message
+  nick: state.game.nick,
+  message: state.game.message
 });
 
 export default connect(
