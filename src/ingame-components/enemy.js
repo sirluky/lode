@@ -9,7 +9,7 @@ class BattleBoard extends Component {
   cellClicked(e) {
     // console.log(e.target.getAttribute("shot"));
 
-    if (this.props.onturn && e.target.getAttribute("shot"))
+    if (this.props.onturn && e.target.getAttribute("shot") === "true")
       this.props.shoot(parseInt(e.target.getAttribute("index")));
   }
   // componentReady = () => {
