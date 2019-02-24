@@ -4,7 +4,8 @@ export default function changestatus(status = "lobby", data) {
   return function(dispatch) {
     // console.log(pos);
     console.log(data);
-    if (status === CHANGE_STATUS) {
+
+    if (status === JOIN_GAME) {
       emit(JOIN_GAME, { nick: data.nick });
     }
 
