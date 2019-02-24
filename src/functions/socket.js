@@ -1,6 +1,6 @@
 import openSocket from "socket.io-client";
 // const socket = openSocket("http://localhost:9378");
-const socket = openSocket("https://3000-bakespinelessgopher.cdr.co/");
+const socket = openSocket("https://8080-bakespinelessgopher.cdr.co/");
 
 // function subscribeToTimer(cb) {
 //   socket.on("timer", timestamp => cb(null, timestamp));
