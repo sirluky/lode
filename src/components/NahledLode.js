@@ -22,12 +22,12 @@ export default function NahledLode({
   const overPlaceholder = { id: "1234", type: "nic" };
   pomlod.setRotation(rotation);
 
-  let smallboard = cutBoard(fullBoard, 10, pos - 22, 5, overPlaceholder);
+  let overlayBoard = cutBoard(fullBoard, 10, pos, 5, overPlaceholder);
 
-  let lzepolozit = placeShip(smallboard, 5, pomlod, true);
-  smallboard = placeShip(blankboard(5), 5, pomlod);
+  let lzepolozit = placeShip(overlayBoard, 5, pomlod, true);
+  // overlayBoard = placeShip(overlayBoard, 5, pomlod);
 
-  // console.log(shipbody);
+  overlayBoard = placeShip(blankboard(5), 5, pomlod);
 
   return (
     <div>
@@ -42,11 +42,11 @@ export default function NahledLode({
           style={{
             width: 168,
             height: 168,
-            left: 33.5 * (centeredpos % 10) - 67,
-            top: 33.5 * (Math.floor(centeredpos / 10) - 2)
+            left: 33.5 * (pos % 10) - 67,
+            top: 33.5 * (Math.floor(pos / 10) - 2)
           }}
         >
-          {smallboard.map((e, index) => (
+          {overlayBoard.map((e, index) => (
             <div
               key={index}
               index={index}
@@ -58,7 +58,7 @@ export default function NahledLode({
                   parseInt(centeredpos) +
                     (index % 5) +
                     Math.floor(index / 5) * 10 -
-                    24
+                    22
                 );
 
                 setLoc(
