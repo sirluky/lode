@@ -40,7 +40,7 @@ class MyBoard extends Component {
     });
   };
   previewStatus = val => {
-    this.setState({ nahledOn: val });
+    this.setState({ nahledOn: val + 22 });
   };
 
   // componentReady = () => {
