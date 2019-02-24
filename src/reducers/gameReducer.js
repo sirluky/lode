@@ -26,14 +26,19 @@ function initial() {
 const initialState = {
   board: initial(),
   enemyboard: initial(),
-  nick: "Guest",
-  enemynick: "Guest",
-  message: "_",
+  nick: "Guest" + Math.floor(Math.random() * 1000),
+  enemynick: "tvůj soupeř",
+  message: "Vítej na lodi :-D",
   onturn: false,
   ships: {
     selected: "none",
     rotation: 1,
-    offers: [{ type: "small", remaining: 2 }, { type: "medium", remaining: 3 }],
+    offers: [
+      { type: "quad", remaining: 1 },
+      { type: "micro", remaining: 1 },
+      { type: "small", remaining: 2 },
+      { type: "medium", remaining: 3 }
+    ],
     placed: []
   },
   status: "lobby",
@@ -44,6 +49,10 @@ export default function(state = initialState, action) {
   switch (action.type) {
     case SHOOT:
       const enboard = state.enemyboard;
+      if (typeof action.hit !== "boolean") {
+        enboard[action.position].type = "shiphit";
+        alert("Vyhral jsi!");
+      }
       if (action.hit) enboard[action.position].type = "shiphit";
       else {
         enboard[action.position].type = "missed";
@@ -57,6 +66,12 @@ export default function(state = initialState, action) {
       const board = state.board;
       // alert(action.position);
       // if (board[action.position].type === "lod")
+      if (typeof action.shiphit !== "boolean") {
+        board[action.position].type = "shiphit";
+        state.onturn = !state.onturn;
+
+        alert("Prohral jsi");
+      }
       if (action.shiphit) board[action.position].type = "shiphit";
       else {
         // console.log(board[action.position].type);
