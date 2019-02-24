@@ -17,7 +17,7 @@ class ControlPanel extends Component {
             onClick={e => {
               this.props.playerReady();
               if (e.currentTarget.innerText === "Spustit hru")
-                this.props.changeStatus(CHANGE_STATUS, {
+                this.props.changeStatus(JOIN_GAME, {
                   nick: this.props.mynick
                 });
               else this.props.changeStatus("waiting");
