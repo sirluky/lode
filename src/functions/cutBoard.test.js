@@ -107,11 +107,11 @@ test("from 10x10 grid 5x5", () => {
     0,
     0
   ];
-  expect(cutBoard(arr, 10, 22, 3)).toEqual([1, 2, 3, 4, 5, 6, 7, 8, 9]);
+  expect(cutBoard(arr, 10, 33, 3, "nic")).toEqual([1, 2, 3, 4, 5, 6, 7, 8, 9]);
 });
 
 test("3x3 oversize", () => {
   let arr = [0, 1, 2, 0, 1, 3, 0, 1, 4];
-  expect(cutBoard(arr, 3, 1, 3, 8)).toEqual([1, 2, 8, 1, 3, 8, 1, 4, 8]);
+  expect(cutBoard(arr, 3, 5, 3, 8)).toEqual([1, 2, 8, 1, 3, 8, 1, 4, 8]);
 });
-checkAround(cutBoard(arr, 10, cpos, 3, { id: "1234", type: "lod" }, true));
+// checkAround(cutBoard(arr, 10, cpos, 3, { id: "1234", type: "lod" }, true));
