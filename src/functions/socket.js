@@ -1,5 +1,5 @@
 import openSocket from "socket.io-client";
-const socket = openSocket("https://thawing-caverns-21424.herokuapp.com/");
+const socket = openSocket("https://thawing-caverns-21424.herokuapp.com:80");
 // const socket = openSocket("https://8080-bakespinelessgopher.cdr.co/");
 
 // function subscribeToTimer(cb) {
