@@ -1,3 +1,4 @@
+Otestujte hru již nyní na [lode.ga](http://lode.ga)
 # Seznam planu
 * v budoucnu opravit zavislost sablony lodi na klientu.
 * Moznost reconnectu.
