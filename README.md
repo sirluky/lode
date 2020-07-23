@@ -1,4 +1,4 @@
-Otestujte hru již nyní na [lode.ga](http://lode.ga)
+Otestujte hru již nyní na [lode.ga](http://lode.netlify.app)
 # Seznam planu
 * v budoucnu opravit zavislost sablony lodi na klientu.
 * Moznost reconnectu.
