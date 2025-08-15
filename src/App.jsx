@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import "./App.css";
 
 // import MyBoard from "./components/MyBoard";
@@ -7,17 +7,16 @@ import "./App.css";
 import { Provider } from "react-redux";
 import store from "./store";
 // import ShipSelect from "./components/ShipSelect";
-import Main from "./main";
+import Main from "./main.jsx";
 // import { connect } from "react-redux";
 // import { placeBoat } from "../actions/gameActions";
-class App extends Component {
-  render() {
-    return (
-      <Provider store={store}>
-        <Main />
-      </Provider>
-    );
-  }
+
+function App() {
+  return (
+    <Provider store={store}>
+      <Main />
+    </Provider>
+  );
 }
 
 export default App;
