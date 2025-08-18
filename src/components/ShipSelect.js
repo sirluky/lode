@@ -44,14 +44,13 @@ class ShipSelect extends Component {
                   height: 50,
                   width: 0,
                   margin: 0,
-                  transform: "rotate(120deg)",
+                  transform: "rotate(120deg) translate(-89px,-20px)",
                   transition: "opacity 0.3s",
                   cursor: "pointer",
                   paddingTop: -30,
                   zIndex: 2,
                   fontSize: 80,
-                  color: "rgba(255,255,255,0.5)",
-                  transform: "translate(-89px,-20px)"
+                  color: "rgba(255,255,255,0.5)"
                 }}
                 className="fas fa-sync-alt rotate"
               />
