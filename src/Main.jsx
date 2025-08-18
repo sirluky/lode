@@ -15,7 +15,7 @@ import {
   JOIN_GAME
 } from "./actions/types";
 import Boards from "./ingame-components/boards";
-class App extends Component {
+class Main extends Component {
   componentDidMount = () => {
     // console.log(this.props);
     on(CHANGE_STATUS, data => {
@@ -54,4 +54,4 @@ const mapStateToProps = state => ({
 export default connect(
   mapStateToProps,
   { changeStatus }
-)(App);
+)(Main);
