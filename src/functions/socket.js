@@ -1,6 +1,6 @@
-import { io } from "socket.io-client";
+import openSocket from "socket.io-client";
 
-const socket = io(import.meta.env.REACT_APP_API_URL || "");
+const socket = openSocket(process.env.REACT_APP_API_URL || "");
 
 function on(type, action) {
   socket.on(type, function (d) {
